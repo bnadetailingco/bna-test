@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Thank You — BNA Detailing Co. | Guelph, Ontario</title>
+  <meta name="description" content="Your quote request has been received. BNA Detailing Co. will be in touch shortly to confirm your mobile car detailing booking in Guelph, Ontario.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://bnadetailing.com/thankyou.html">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Fonts & Icons (matches rest of site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Site stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ============================================================
+       GOOGLE ANALYTICS PLACEHOLDER
+       Replace G-XXXXXXX with your real Measurement ID.
+       This page = a confirmed lead. Mark as a Conversion Event
+       in GA4 → Admin → Events → Mark as Conversion.
+  ============================================================= -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+    gtag('event', 'quote_form_submitted', {
+      event_category: 'Lead',
+      event_label: 'Contact Page Quote Form',
+      value: 1
+    });
+  </script>
+  -->
+
+  <style>
+    /* ── Nav offset (matches other interior pages) ── */
+    .site-nav { top: 38px; }
+    @media (max-width: 860px) {
+      .site-nav { top: 35px; }
+    }
+
+    /* ── Page wrapper ── */
+    .ty-page {
+      min-height: calc(100vh - 200px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 158px 20px 80px;
+      background: var(--light-bg);
+    }
+
+    /* ── Card ── */
+    .ty-card {
+      width: 100%;
+      max-width: 620px;
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: 0 8px 40px var(--shadow-lg);
+      overflow: hidden;
+      text-align: center;
+
+      opacity: 0;
+      transform: translateY(28px);
+      animation: fadeUp 0.65s cubic-bezier(0.22,1,0.36,1) 0.1s forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Card dark header (matches .svc-card-header style) ── */
+    .ty-card-top {
+      background: var(--dark);
+      padding: 44px 40px 38px;
+      color: var(--white);
+    }
+
+    /* ── Check icon ── */
+    .ty-check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(134,197,218,0.15);
+      border: 2px solid rgba(134,197,218,0.4);
+      margin-bottom: 22px;
+
+      opacity: 0;
+      animation: popIn 0.55s cubic-bezier(0.22,1,0.36,1) 0.55s forwards;
+    }
+
+    @keyframes popIn {
+      0%   { opacity: 0; transform: scale(0.65); }
+      75%  { transform: scale(1.07); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .ty-check i {
+      font-size: 30px;
+      color: var(--main);
+    }
+
+    /* ── Headline ── */
+    .ty-headline {
+      font-size: clamp(26px, 4vw, 34px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 12px;
+
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.65s forwards;
+    }
+
+    .ty-headline span { color: var(--main); }
+
+    .ty-subhead {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+      max-width: 440px;
+      margin: 0 auto;
+
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.75s forwards;
+    }
+
+    /* ── Card body ── */
+    .ty-card-body {
+      padding: 36px 40px 44px;
+    }
+
+    /* ── Expectation block ── */
+    .ty-expect {
+      background: var(--light-bg);
+      border: 1px solid #d8ecf3;
+      border-radius: 12px;
+      padding: 20px 22px;
+      text-align: left;
+      margin-bottom: 28px;
+
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.85s forwards;
+    }
+
+    .ty-expect-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 10px;
+    }
+
+    .ty-expect-label i { color: var(--main); font-size: 13px; }
+
+    .ty-expect p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.65;
+    }
+
+    .ty-expect p + p { margin-top: 6px; }
+
+    /* ── Contact pills ── */
+    .ty-contact {
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.95s forwards;
+    }
+
+    .ty-contact-note {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 14px;
+    }
+
+    .ty-contact-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ty-pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 20px;
+      border-radius: 10px;
+      border: 1.5px solid #e0e0e0;
+      background: var(--white);
+      color: var(--dark);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .ty-pill i { color: var(--main); font-size: 16px; }
+
+    .ty-pill:hover {
+      border-color: var(--main);
+      background: var(--card-bg);
+    }
+
+    /* ── Divider ── */
+    .ty-divider {
+      height: 1px;
+      background: #eee;
+      margin: 28px 0;
+      opacity: 0;
+      animation: fadeUp 0.4s ease 1.0s forwards;
+    }
+
+    /* ── Trust row ── */
+    .ty-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 1.05s forwards;
+    }
+
+    .ty-trust .stars { color: #f5c842; letter-spacing: 2px; }
+
+    /* ── Action buttons ── */
+    .ty-actions {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 1.12s forwards;
+    }
+
+    .ty-actions .btn {
+      flex: 1;
+      text-align: center;
+      padding: 13px 16px;
+      font-size: 13px;
+    }
+
+    /* ── Social footer ── */
+    .ty-social {
+      opacity: 0;
+      animation: fadeUp 0.5s ease 1.2s forwards;
+    }
+
+    .ty-social-note {
+      font-size: 12px;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+
+    .ty-social-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .ty-social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1.5px solid #e0e0e0;
+      color: #555;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .ty-social-link i { font-size: 15px; }
+
+    .ty-social-link:hover {
+      border-color: var(--main);
+      color: var(--dark);
+      background: var(--card-bg);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .ty-page { padding-top: 148px; }
+    }
+
+    @media (max-width: 520px) {
+      .ty-card-top  { padding: 32px 24px 28px; }
+      .ty-card-body { padding: 28px 22px 36px; }
+      .ty-actions   { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== TOP ANNOUNCEMENT BAR ===== -->
+<div class="top-bar">
+  <span>
+    <strong class="badge">LIMITED TIME</strong> 20% OFF when you pre-book now for our May 3rd opening!
+  </span>
+</div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="site-nav solid" id="siteNav">
+  <a href="index.html" class="logo">
+    <img src="images/bna%20logo.png" alt="BNA Detailing Co. — Mobile Car Detailing Guelph, Ontario">
+  </a>
+  <div class="nav-right">
+    <div class="social-nav">
+      <a href="https://www.instagram.com/bnadetailingco" target="_blank" rel="noopener noreferrer" aria-label="BNA Detailing Co. on Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@bnadetailingco" target="_blank" rel="noopener noreferrer" aria-label="BNA Detailing Co. on TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+    <div class="nav-menu">
+      <a href="index.html">HOME</a>
+      <a href="services.html">SERVICES</a>
+      <a href="gallery.html">GALLERY</a>
+      <a href="contact-us.html" class="active">CONTACT</a>
+      <a href="https://book.squareup.com/appointments/ii0uvft0j96s75/location/LG6PJW85D509R/services" target="_blank" class="btn btn-primary">BOOK NOW</a>
+    </div>
+    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobileMenu">
+  <button class="close-btn" onclick="closeMobileMenu()">&times;</button>
+  <a href="index.html">HOME</a>
+  <a href="services.html">SERVICES</a>
+  <a href="gallery.html">GALLERY</a>
+  <a href="contact-us.html">CONTACT</a>
+  <a href="https://book.squareup.com/appointments/ii0uvft0j96s75/location/LG6PJW85D509R/services" style="color:#86c5da;">BOOK NOW</a>
+</div>
+
+<!-- ===== THANK YOU SECTION ===== -->
+<main class="ty-page" aria-label="Quote request confirmation">
+  <div class="ty-card">
+
+    <!-- Dark header -->
+    <div class="ty-card-top">
+
+      <!-- 1. Check icon -->
+      <div class="ty-check" role="img" aria-label="Success">
+        <i class="fa-solid fa-check"></i>
+      </div>
+
+      <!-- 2. Headline -->
+      <h1 class="ty-headline">You're <span>All Set!</span></h1>
+
+      <!-- 3. Confirmation text -->
+      <p class="ty-subhead">
+        Your quote request has been received. We'll be reaching out shortly to confirm your booking details.
+      </p>
+
+    </div>
+
+    <!-- Card body -->
+    <div class="ty-card-body">
+
+      <!-- 4. Expectation setting -->
+      <div class="ty-expect">
+        <div class="ty-expect-label">
+          <i class="fa-solid fa-clock"></i>
+          What happens next
+        </div>
+        <p>We typically respond within <strong>1–2 hours</strong> during business hours (9 AM – 6 PM, 7 days a week).</p>
+        <p>If submitted after hours, we'll be in touch <strong>first thing the next morning.</strong></p>
+      </div>
+
+      <!-- 5. Contact reassurance -->
+      <div class="ty-contact">
+        <p class="ty-contact-note">Need immediate assistance? Call or text us directly.</p>
+        <div class="ty-contact-pills">
+          <a href="tel:12264550942" class="ty-pill">
+            <i class="fa-solid fa-phone"></i>
+            (226) 455-0942
+          </a>
+          <a href="mailto:bnadetailingco@gmail.com" class="ty-pill">
+            <i class="fa-solid fa-envelope"></i>
+            bnadetailingco@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <div class="ty-divider"></div>
+
+      <!-- 6. Trust line -->
+      <div class="ty-trust">
+        <span class="stars">★★★★★</span>
+        <span>Trusted across Guelph for 5-star mobile detailing</span>
+      </div>
+
+      <!-- 7. Action button -->
+      <div class="ty-actions">
+        <a href="index.html" class="btn btn-primary" style="flex:1;">
+          <i class="fa-solid fa-arrow-left"></i>&nbsp; Back to Home
+        </a>
+      </div>
+
+      <!-- 8. Social proof -->
+      <div class="ty-social">
+        <p class="ty-social-note">Follow us for transformations &amp; results</p>
+        <div class="ty-social-links">
+          <a href="https://www.instagram.com/bnadetailingco" target="_blank" rel="noopener noreferrer" class="ty-social-link" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i> @bnadetailingco
+          </a>
+          <a href="https://www.tiktok.com/@bnadetailingco" target="_blank" rel="noopener noreferrer" class="ty-social-link" aria-label="TikTok">
+            <i class="fa-brands fa-tiktok"></i> @bnadetailingco
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /ty-card-body -->
+  </div><!-- /ty-card -->
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/bnadetailingco" target="_blank" rel="noopener noreferrer" aria-label="BNA Detailing Co. on Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@bnadetailingco" target="_blank" rel="noopener noreferrer" aria-label="BNA Detailing Co. on TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+    <nav style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px 24px;margin-bottom:18px;" aria-label="Footer navigation">
+      <a href="index.html" style="color:rgba(255,255,255,0.55);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#86c5da'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Home</a>
+      <a href="services.html" style="color:rgba(255,255,255,0.55);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#86c5da'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Services</a>
+      <a href="gallery.html" style="color:rgba(255,255,255,0.55);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#86c5da'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Gallery</a>
+      <a href="contact-us.html" style="color:rgba(255,255,255,0.55);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#86c5da'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Contact</a>
+    </nav>
+    <p class="seo-text">Proudly serving Guelph, Ontario with expert mobile car detailing services — trusted for interior cleaning, exterior washes, and full-service vehicle detailing.</p>
+    <p class="copy">&copy; 2025 BNA Detailing Co. | All rights reserved.</p>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to Top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+  function openMobileMenu()  { document.getElementById('mobileMenu').classList.add('open'); }
+  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  document.getElementById('backToTop').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<!-- ==== CHATBOT ==== -->
+<script src="chatbot-widget.js"></script>
+
+<!--
+================================================================
+FORMSUBMIT INTEGRATION
+================================================================
+Add this hidden input inside your <form> in contact-us.html
+to redirect users here after a successful submission:
+
+  <input type="hidden" name="_next" value="https://bnadetailing.com/thankyou.html">
+
+================================================================
+-->
+
+</body>
+</html>

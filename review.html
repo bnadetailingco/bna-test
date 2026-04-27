@@ -4,41 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rate Your Experience | BNA Detailing Co.</title>
-
-  <!-- Hidden from Google search results -->
   <meta name="robots" content="noindex, nofollow">
-
-  <!-- Favicons (same as rest of site) -->
   <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
   <link rel="shortcut icon" href="favicon.ico">
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
-    /* ── Reset ── */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* ── Brand tokens matching style.css ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --main:      #86c5da;
-      --dark:      #283b41;
-      --mid:       #5a8694;
-      --white:     #ffffff;
+      --main: #86c5da;
+      --dark: #283b41;
+      --mid: #5a8694;
+      --white: #ffffff;
       --star-idle: #3d555c;
-      --star-on:   #f5a623;
+      --star-on: #f5a623;
     }
-
-    /* ── Base ── */
     html, body {
       min-height: 100%;
       font-family: 'Poppins', sans-serif;
@@ -47,8 +29,6 @@
       overflow-x: hidden;
       line-height: 1.6;
     }
-
-    /* Subtle ambient glow */
     body::before {
       content: '';
       position: fixed;
@@ -59,8 +39,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
-    /* ── Outer wrapper ── */
     .page-wrap {
       position: relative;
       z-index: 1;
@@ -71,19 +49,8 @@
       justify-content: center;
       padding: 48px 20px 64px;
     }
-
-    /* ── Logo ── */
-    .logo-wrap {
-      margin-bottom: 36px;
-      text-align: center;
-    }
-
-    .logo-wrap img {
-      height: 54px;
-      width: auto;
-    }
-
-    /* ── Card ── */
+    .logo-wrap { margin-bottom: 36px; text-align: center; }
+    .logo-wrap img { height: 54px; width: auto; }
     .card {
       width: 100%;
       max-width: 500px;
@@ -96,335 +63,283 @@
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 24px 64px rgba(0,0,0,0.3);
     }
-
-    /* ── Step panel system ── */
-    .step {
-      display: none;
-    }
-
-    .step.active {
-      display: block;
-      animation: fadeUp 0.35s ease both;
-    }
-
+    .step { display: none; }
+    .step.active { display: block; animation: fadeUp 0.35s ease both; }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0);    }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ══════════════════════════════
-       STEP 0  Star Rating
-    ══════════════════════════════ */
-
+    /* ── Step 0: Star Rating ── */
     .greeting-label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--main);
-      margin-bottom: 12px;
+      font-size: 12px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--main); margin-bottom: 12px;
     }
-
     .card-headline {
-      font-size: clamp(20px, 4vw, 28px);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.2;
-      margin-bottom: 8px;
+      font-size: clamp(20px, 4vw, 28px); font-weight: 700;
+      color: var(--white); line-height: 1.2; margin-bottom: 8px;
     }
-
     .card-subtitle {
-      font-size: 14px;
-      color: rgba(255,255,255,0.5);
-      font-weight: 400;
-      margin-bottom: 38px;
-      line-height: 1.65;
+      font-size: 14px; color: rgba(255,255,255,0.5);
+      font-weight: 400; margin-bottom: 38px; line-height: 1.65;
     }
-
     .stars-row {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 14px;
+      display: flex; justify-content: center; gap: 8px; margin-bottom: 14px;
     }
-
     .star-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px 2px;
-      line-height: 1;
+      background: none; border: none; cursor: pointer;
+      padding: 4px 2px; line-height: 1;
       transition: transform 0.12s ease;
+      /* Staggered entrance animation */
+      opacity: 0;
+      animation: starPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
-
+    .star-btn:nth-child(1) { animation-delay: 0.55s; }
+    .star-btn:nth-child(2) { animation-delay: 0.65s; }
+    .star-btn:nth-child(3) { animation-delay: 0.75s; }
+    .star-btn:nth-child(4) { animation-delay: 0.85s; }
+    .star-btn:nth-child(5) { animation-delay: 0.95s; }
+    @keyframes starPop {
+      0%   { opacity: 0; transform: scale(0.3) translateY(10px); }
+      70%  { opacity: 1; transform: scale(1.2) translateY(-4px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
     .star-btn:hover  { transform: scale(1.18); }
     .star-btn:active { transform: scale(0.92); }
-
     .star-btn i {
-      font-size: 46px;
-      color: var(--star-idle);
-      transition: color 0.13s ease, text-shadow 0.13s ease;
-      display: block;
+      font-size: 46px; color: var(--star-idle);
+      transition: color 0.13s ease, text-shadow 0.13s ease; display: block;
     }
+    .star-btn.lit i { color: var(--star-on); text-shadow: 0 0 18px rgba(245,166,35,0.45); }
+    .star-hint { height: 18px; font-size: 13px; color: rgba(255,255,255,0.38); }
 
-    .star-btn.lit i {
-      color: var(--star-on);
-      text-shadow: 0 0 18px rgba(245,166,35,0.45);
-    }
-
-    .star-hint {
-      height: 18px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.38);
-    }
-
-    /* ══════════════════════════════
-       STEP 1  5-star thank you
-    ══════════════════════════════ */
-
+    /* ── Shared step styles ── */
     .icon-circle {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 22px;
+      width: 70px; height: 70px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 22px;
     }
-
-    .icon-circle.teal {
-      background: rgba(134,197,218,0.1);
-      border: 1.5px solid rgba(134,197,218,0.28);
-    }
-
+    .icon-circle.teal { background: rgba(134,197,218,0.1); border: 1.5px solid rgba(134,197,218,0.28); }
     .icon-circle.teal i { color: var(--main); }
-
+    .icon-circle.gold { background: rgba(245,166,35,0.1); border: 1.5px solid rgba(245,166,35,0.28); }
+    .icon-circle.gold i { color: var(--star-on); }
     .icon-circle i { font-size: 28px; }
+    .step-title { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .step-body { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 28px; }
 
-    .step-title {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-
-    .step-body {
-      font-size: 14px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.7;
-      margin-bottom: 28px;
-    }
-
+    /* ── Step 1: 5-star ── */
     .btn-google {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 15px 20px;
-      background: var(--main);
-      color: var(--dark);
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      text-decoration: none;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 15px 20px; background: var(--main); color: var(--dark);
+      font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 700;
+      border: none; border-radius: 12px; cursor: pointer; text-decoration: none;
       letter-spacing: 0.2px;
       transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
       box-shadow: 0 4px 18px rgba(134,197,218,0.22);
     }
-
-    .btn-google:hover {
-      background: var(--white);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 26px rgba(134,197,218,0.28);
-    }
-
+    .btn-google:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 8px 26px rgba(134,197,218,0.28); }
     .btn-google i { font-size: 16px; }
+    .google-nudge { margin-top: 12px; font-size: 12px; color: rgba(255,255,255,0.28); letter-spacing: 0.2px; }
 
-    /* ══════════════════════════════
-       STEP 2  Feedback form
-    ══════════════════════════════ */
-
-    .notice-box {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      background: rgba(245,166,35,0.07);
-      border: 1px solid rgba(245,166,35,0.2);
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin-bottom: 26px;
-      text-align: left;
+    /* ── Step 1b: 4-star convince ── */
+    .stars-preview {
+      display: flex; justify-content: center; gap: 5px; margin-bottom: 18px;
     }
-
-    .notice-box i {
-      font-size: 18px;
-      color: #f5a623;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .notice-text strong {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 3px;
-    }
-
-    .notice-text span {
-      font-size: 12px;
-      color: rgba(255,255,255,0.45);
-      line-height: 1.5;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .field {
-      margin-bottom: 16px;
-      text-align: left;
-    }
-
-    .field label {
-      display: block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 7px;
-    }
-
-    .opt-tag {
-      font-size: 10px;
-      font-weight: 400;
-      color: rgba(255,255,255,0.25);
-      letter-spacing: 0;
-      text-transform: none;
-      margin-left: 4px;
-    }
-
-    .field input,
-    .field textarea {
-      width: 100%;
-      padding: 12px 14px;
-      background: rgba(255,255,255,0.05);
+    .stars-preview i { font-size: 28px; color: var(--star-on); }
+    .stars-preview i.idle { color: var(--star-idle); }
+    .convince-box {
+      background: rgba(134,197,218,0.06);
       border: 1px solid rgba(134,197,218,0.18);
-      border-radius: 10px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px;
-      color: var(--white);
-      outline: none;
-      transition: border-color 0.18s, background 0.18s;
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 22px;
+      text-align: left;
     }
-
-    .field input::placeholder,
-    .field textarea::placeholder {
-      color: rgba(255,255,255,0.22);
+    .convince-box p {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      margin-bottom: 0;
     }
-
-    .field input:focus,
-    .field textarea:focus {
-      border-color: var(--main);
-      background: rgba(134,197,218,0.05);
+    .convince-box p + p { margin-top: 10px; }
+    .convince-box strong { color: var(--white); }
+    .btn-convince-google {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 15px 20px; background: var(--star-on); color: #1a1000;
+      font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 700;
+      border: none; border-radius: 12px; cursor: pointer; text-decoration: none;
+      letter-spacing: 0.2px; margin-bottom: 14px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(245,166,35,0.2);
     }
-
-    .field textarea {
-      resize: vertical;
-      min-height: 108px;
-      line-height: 1.55;
-    }
-
-    .required-star {
-      color: #f5a623;
-    }
-
-    .btn-submit {
-      width: 100%;
-      padding: 15px 20px;
-      background: rgba(134,197,218,0.12);
-      border: 1.5px solid rgba(134,197,218,0.5);
-      border-radius: 12px;
-      color: var(--main);
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
+    .btn-convince-google:hover { background: #ffc040; transform: translateY(-2px); }
+    .btn-convince-google i { font-size: 16px; }
+    .link-no-thanks {
+      display: block;
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
       cursor: pointer;
-      letter-spacing: 0.2px;
-      margin-top: 4px;
+      background: none; border: none;
+      font-family: 'Poppins', sans-serif;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+      margin: 0 auto;
+    }
+    .link-no-thanks:hover { color: rgba(255,255,255,0.5); }
+
+    /* ── Step 2: Feedback form ── */
+    .notice-box {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(245,166,35,0.07); border: 1px solid rgba(245,166,35,0.2);
+      border-radius: 12px; padding: 14px 16px; margin-bottom: 26px; text-align: left;
+    }
+    .notice-box i { font-size: 18px; color: #f5a623; flex-shrink: 0; margin-top: 2px; }
+    .notice-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 3px; }
+    .notice-text span { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { margin-bottom: 16px; text-align: left; }
+    .field label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 7px; }
+    .opt-tag { font-size: 10px; font-weight: 400; color: rgba(255,255,255,0.25); letter-spacing: 0; text-transform: none; margin-left: 4px; }
+    .field input, .field textarea {
+      width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(134,197,218,0.18); border-radius: 10px;
+      font-family: 'Poppins', sans-serif; font-size: 14px; color: var(--white);
+      outline: none; transition: border-color 0.18s, background 0.18s;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.22); }
+    .field input:focus, .field textarea:focus { border-color: var(--main); background: rgba(134,197,218,0.05); }
+    .field textarea { resize: vertical; min-height: 108px; line-height: 1.55; }
+    .required-star { color: #f5a623; }
+    .btn-submit {
+      width: 100%; padding: 15px 20px; background: rgba(134,197,218,0.12);
+      border: 1.5px solid rgba(134,197,218,0.5); border-radius: 12px;
+      color: var(--main); font-family: 'Poppins', sans-serif; font-size: 15px;
+      font-weight: 600; cursor: pointer; letter-spacing: 0.2px; margin-top: 4px;
       transition: background 0.2s, color 0.2s, transform 0.15s, border-color 0.2s;
     }
+    .btn-submit:hover { background: var(--main); color: var(--dark); border-color: var(--main); transform: translateY(-2px); }
+    .btn-submit:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
-    .btn-submit:hover {
-      background: var(--main);
-      color: var(--dark);
-      border-color: var(--main);
-      transform: translateY(-2px);
+    /* ── Step 3: Done (after feedback) ── */
+    .done-google-nudge {
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,0.07);
     }
-
-    .btn-submit:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    /* ══════════════════════════════
-       STEP 3  Confirmation
-    ══════════════════════════════ */
-
-    /* reuses .icon-circle.teal, .step-title, .step-body */
-
-    /* ── Page footer ── */
-    .page-footer {
-      margin-top: 30px;
+    .done-google-nudge p {
       font-size: 12px;
-      color: rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 12px;
+    }
+    .btn-google-soft {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid rgba(134,197,218,0.25);
+      border-radius: 10px;
+      color: rgba(134,197,218,0.6);
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px; font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-google-soft:hover { border-color: var(--main); color: var(--main); }
+
+    /* ── Exit-intent overlay ── */
+    .exit-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(15, 25, 28, 0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.25s ease both;
+    }
+    .exit-overlay.show { display: flex; }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .exit-card {
+      width: 100%;
+      max-width: 420px;
+      background: #1e2f34;
+      border: 1px solid rgba(134,197,218,0.2);
+      border-radius: 22px;
+      padding: 40px 32px;
       text-align: center;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+      animation: popUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
+    @keyframes popUp {
+      from { opacity: 0; transform: scale(0.88) translateY(20px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .exit-stars {
+      display: flex; justify-content: center; gap: 6px; margin-bottom: 18px;
+    }
+    .exit-stars i { font-size: 30px; color: var(--star-on); text-shadow: 0 0 12px rgba(245,166,35,0.4); }
+    .exit-title {
+      font-size: 20px; font-weight: 700; color: var(--white);
+      line-height: 1.25; margin-bottom: 10px;
+    }
+    .exit-body {
+      font-size: 13.5px; color: rgba(255,255,255,0.5);
+      line-height: 1.7; margin-bottom: 26px;
+    }
+    .exit-body strong { color: rgba(255,255,255,0.8); }
+    .exit-btn-primary {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 14px 20px; background: var(--main); color: var(--dark);
+      font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700;
+      border: none; border-radius: 12px; cursor: pointer; text-decoration: none;
+      margin-bottom: 12px;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 18px rgba(134,197,218,0.2);
+    }
+    .exit-btn-primary:hover { background: var(--white); transform: translateY(-2px); }
+    .exit-btn-dismiss {
+      background: none; border: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px; color: rgba(255,255,255,0.22);
+      cursor: pointer; text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .exit-btn-dismiss:hover { color: rgba(255,255,255,0.45); }
 
-    /* ── Responsive ── */
+    /* Footer */
+    .page-footer { margin-top: 30px; font-size: 12px; color: rgba(255,255,255,0.18); text-align: center; }
+
+    /* Responsive */
     @media (max-width: 540px) {
-      .card {
-        padding: 36px 22px;
-        border-radius: 20px;
-      }
-
+      .card { padding: 36px 22px; border-radius: 20px; }
       .star-btn i { font-size: 38px; }
-      .stars-row  { gap: 4px; }
-      .two-col    { grid-template-columns: 1fr; }
+      .stars-row { gap: 4px; }
+      .two-col { grid-template-columns: 1fr; }
+      .exit-card { padding: 32px 22px; }
     }
-
-    @media (max-width: 360px) {
-      .star-btn i { font-size: 32px; }
-    }
+    @media (max-width: 360px) { .star-btn i { font-size: 32px; } }
   </style>
 </head>
-
 <body>
 <div class="page-wrap">
 
-  <!-- Logo -->
   <div class="logo-wrap">
     <img src="images/bna%20logo.png" alt="BNA Detailing Co.">
   </div>
 
   <div class="card">
 
-    <!-- ══════════════════════════════
-         STEP 0  Star rating
-    ══════════════════════════════ -->
+    <!-- STEP 0: Star Rating -->
     <div class="step active" id="stepRating">
       <p class="greeting-label" id="greetingLabel">BNA Detailing Co.</p>
       <h1 class="card-headline" id="headlineText">How was your detail today?</h1>
       <p class="card-subtitle">Your opinion means everything to us.<br>Tap a star to rate your experience.</p>
-
       <div class="stars-row" id="starsRow" role="group" aria-label="Rate your experience">
         <button class="star-btn" data-value="1" aria-label="1 star"  type="button"><i class="fa-solid fa-star"></i></button>
         <button class="star-btn" data-value="2" aria-label="2 stars" type="button"><i class="fa-solid fa-star"></i></button>
@@ -432,24 +347,22 @@
         <button class="star-btn" data-value="4" aria-label="4 stars" type="button"><i class="fa-solid fa-star"></i></button>
         <button class="star-btn" data-value="5" aria-label="5 stars" type="button"><i class="fa-solid fa-star"></i></button>
       </div>
-
       <p class="star-hint" id="starHint">&nbsp;</p>
     </div>
 
-    <!-- ══════════════════════════════
-         STEP 1  5-star redirect
-    ══════════════════════════════ -->
+    <!-- STEP 1: 5-star -->
     <div class="step" id="stepFiveStar">
       <div class="icon-circle teal">
-        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-star"></i>
       </div>
-      <h2 class="step-title">That's amazing &mdash; thank you!</h2>
+      <h2 class="step-title">That's amazing — thank you!</h2>
       <p class="step-body">
         We're so glad you had a great experience. Would you
         mind sharing it on Google? It takes 30 seconds and
         helps our small business more than you know.
       </p>
       <a
+        id="googleBtn5"
         href="https://g.page/r/CaMYvMwNBNOwEBM/review"
         target="_blank"
         rel="noopener noreferrer"
@@ -458,33 +371,54 @@
         <i class="fa-brands fa-google"></i>
         Leave a Google Review
       </a>
+      <p class="google-nudge">Opens Google — already logged in on most phones</p>
     </div>
 
-    <!-- ══════════════════════════════
-         STEP 2  Private feedback form
-    ══════════════════════════════ -->
-    <div class="step" id="stepFeedback">
+    <!-- STEP 1b: 4-star convince -->
+    <div class="step" id="stepConvince">
+      <div class="stars-preview">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star idle"></i>
+      </div>
+      <h2 class="step-title">Really glad you enjoyed it!</h2>
+      <div class="convince-box">
+        <p>A <strong>5-star review</strong> makes a huge difference for a small local business like ours — it's how families in Guelph find us and trust us.</p>
+        <p>If we earned it today, would you consider leaving us that 5th star on Google? It takes under 30 seconds.</p>
+      </div>
+      <a
+        id="googleBtn4"
+        href="https://g.page/r/CaMYvMwNBNOwEBM/review"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-convince-google"
+      >
+        <i class="fa-brands fa-google"></i>
+        Sure — leave a 5-star review
+      </a>
+      <button class="link-no-thanks" id="noThanksBtn" type="button">
+        No thanks, I'd rather leave 4 stars
+      </button>
+    </div>
 
+    <!-- STEP 2: Feedback form (1–3 stars, or "no thanks" from convince) -->
+    <div class="step" id="stepFeedback">
       <div class="notice-box">
         <i class="fa-solid fa-comment-dots"></i>
         <div class="notice-text">
-          <strong>Sorry to hear that.</strong>
-          <span>Your message goes directly to our owner. We read every one and take action on it.</span>
+          <strong id="feedbackNoticeTitle">Sorry to hear that.</strong>
+          <span id="feedbackNoticeBody">Your message goes directly to our owner. We read every one and take action on it.</span>
         </div>
       </div>
-
-      <form id="feedbackForm" action="https://formsubmit.co/info@bnadetailing.com" method="POST">
-
-        <!-- FormSubmit configuration -->
+      <form id="feedbackForm" action="https://formsubmit.co/bnadetailingco@gmail.com" method="POST">
         <input type="hidden" name="_subject"  value="Customer Feedback - BNA Detailing Co.">
         <input type="hidden" name="_captcha"  value="false">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next"     value="about:blank">
-
-        <!-- Populated by JS before submit -->
         <input type="hidden" id="hiddenRating"  name="Star Rating"    value="">
         <input type="hidden" id="hiddenUrlName" name="Customer (URL)" value="">
-
         <div class="two-col">
           <div class="field">
             <label for="fbName">Name <span class="opt-tag">optional</span></label>
@@ -495,30 +429,32 @@
             <input type="text" id="fbContact" name="Contact Info" placeholder="(226) 555-0000" autocomplete="tel">
           </div>
         </div>
-
         <div class="field">
           <label for="fbMessage">Your Feedback <span class="required-star">*</span></label>
           <textarea id="fbMessage" name="Feedback" placeholder="Tell us what happened and how we can do better..." required></textarea>
         </div>
-
         <button type="submit" class="btn-submit" id="submitBtn">Send Feedback</button>
-
       </form>
     </div>
 
-    <!-- ══════════════════════════════
-         STEP 3  Thank you after feedback
-    ══════════════════════════════ -->
+    <!-- STEP 3: Done (feedback submitted) -->
     <div class="step" id="stepDone">
       <div class="icon-circle teal">
         <i class="fa-solid fa-check"></i>
       </div>
-      <h2 class="step-title">Feedback received &mdash; thank you.</h2>
+      <h2 class="step-title">Feedback received — thank you.</h2>
       <p class="step-body" style="margin-bottom: 0;">
         We're sorry your experience wasn't perfect. Our owner
         reviews every message personally and we'll use this
         to keep improving.
       </p>
+      <div class="done-google-nudge">
+        <p>Changed your mind? You can still leave us a quick review.</p>
+        <a href="https://g.page/r/CaMYvMwNBNOwEBM/review" target="_blank" rel="noopener noreferrer" class="btn-google-soft">
+          <i class="fa-brands fa-google"></i>
+          Leave a Google review
+        </a>
+      </div>
     </div>
 
   </div>
@@ -527,24 +463,51 @@
 
 </div>
 
+<!-- ── Exit-intent popup (shown when user tries to leave the 5-star screen) ── -->
+<div class="exit-overlay" id="exitOverlay">
+  <div class="exit-card">
+    <div class="exit-stars">
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+    </div>
+    <h3 class="exit-title">Wait — one small favour?</h3>
+    <p class="exit-body">
+      A Google review from you means <strong>everything</strong> to a small local business.<br><br>
+      It takes 30 seconds and helps other Guelph families find us and trust us.
+    </p>
+    <a
+      href="https://g.page/r/CaMYvMwNBNOwEBM/review"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="exit-btn-primary"
+      id="exitGoogleBtn"
+    >
+      <i class="fa-brands fa-google"></i>
+      Yes, I'll leave a quick review
+    </a>
+    <button class="exit-btn-dismiss" id="exitDismiss" type="button">No thanks, I'm all done</button>
+  </div>
+</div>
+
 <script>
 (function () {
 
-  /* 1. Personalise with ?name= URL param */
+  /* ── URL params ── */
   var params  = new URLSearchParams(window.location.search);
   var urlName = (params.get('name') || '').trim();
-
   if (urlName) {
-    document.getElementById('greetingLabel').textContent = 'Hi ' + urlName + ' \uD83D\uDC4B';
-    document.getElementById('headlineText').textContent  = 'How was your detail today?';
-    document.getElementById('hiddenUrlName').value       = urlName;
+    document.getElementById('greetingLabel').textContent = 'Hi ' + urlName + ' 👋';
+    document.getElementById('hiddenUrlName').value = urlName;
   }
 
-  /* 2. Star label text */
+  /* ── Star hint text ── */
   var hintText = {
-    1: "That bad? We\u2019re really sorry.",
+    1: "That bad? We're really sorry.",
     2: "We can definitely do better.",
-    3: "Pretty good \u2014 room to improve.",
+    3: "Pretty good — room to improve.",
     4: "Really good! Almost perfect.",
     5: "Absolutely love it!"
   };
@@ -556,80 +519,125 @@
   function setLit(upTo) {
     starBtns.forEach(function (b) {
       var v = parseInt(b.getAttribute('data-value'), 10);
-      if (v <= upTo) {
-        b.classList.add('lit');
-      } else {
-        b.classList.remove('lit');
-      }
+      b.classList.toggle('lit', v <= upTo);
     });
   }
 
   starBtns.forEach(function (btn) {
     var val = parseInt(btn.getAttribute('data-value'), 10);
-
     btn.addEventListener('mouseenter', function () {
       setLit(val);
       starHint.textContent = hintText[val] || '';
     });
-
     btn.addEventListener('mouseleave', function () {
       setLit(selectedRating);
       starHint.textContent = selectedRating ? hintText[selectedRating] : '\u00a0';
     });
-
     btn.addEventListener('click', function () {
       selectedRating = val;
       setLit(val);
       starHint.textContent = hintText[val] || '';
-
       setTimeout(function () {
         if (val === 5) {
           showStep('stepFiveStar');
+          activateExitIntent();
+        } else if (val === 4) {
+          document.getElementById('hiddenRating').value = '4 stars';
+          showStep('stepConvince');
         } else {
-          document.getElementById('hiddenRating').value =
-            val + ' star' + (val !== 1 ? 's' : '');
+          document.getElementById('hiddenRating').value = val + ' star' + (val !== 1 ? 's' : '');
           showStep('stepFeedback');
         }
       }, 360);
     });
   });
 
-  /* 3. Switch steps */
+  /* ── 4-star "no thanks" → feedback form ── */
+  document.getElementById('noThanksBtn').addEventListener('click', function () {
+    // Soften the notice box messaging since they weren't unhappy
+    document.getElementById('feedbackNoticeTitle').textContent = 'Thanks for your honesty.';
+    document.getElementById('feedbackNoticeBody').textContent  = 'Let us know what we could do to make it a 5-star experience next time.';
+    showStep('stepFeedback');
+  });
+
+  /* ── Step switcher ── */
   function showStep(id) {
-    document.querySelectorAll('.step').forEach(function (s) {
-      s.classList.remove('active');
-    });
+    document.querySelectorAll('.step').forEach(function (s) { s.classList.remove('active'); });
     document.getElementById(id).classList.add('active');
   }
 
-  /* 4. Feedback form AJAX submit */
+  /* ── Feedback form submit ── */
   var form      = document.getElementById('feedbackForm');
   var submitBtn = document.getElementById('submitBtn');
-
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-
     var msg = document.getElementById('fbMessage').value.trim();
-    if (!msg) {
-      document.getElementById('fbMessage').focus();
-      return;
-    }
-
+    if (!msg) { document.getElementById('fbMessage').focus(); return; }
     submitBtn.disabled    = true;
-    submitBtn.textContent = 'Sending\u2026';
-
+    submitBtn.textContent = 'Sending…';
     fetch(form.action, {
       method:  'POST',
       body:    new FormData(form),
       headers: { 'Accept': 'application/json' }
     })
-    .then(function () {
-      showStep('stepDone');
-    })
-    .catch(function () {
-      showStep('stepDone');
-    });
+    .then(function ()  { showStep('stepDone'); })
+    .catch(function () { showStep('stepDone'); });
   });
+
+  /* ────────────────────────────────────────────────
+     EXIT-INTENT — only active after 5-star screen
+  ──────────────────────────────────────────────── */
+  var exitOverlay      = document.getElementById('exitOverlay');
+  var exitDismiss      = document.getElementById('exitDismiss');
+  var exitGoogleBtn    = document.getElementById('exitGoogleBtn');
+  var googleBtn5       = document.getElementById('googleBtn5');
+  var googleBtn4       = document.getElementById('googleBtn4');
+  var exitActive       = false;   // armed only on 5-star screen
+  var googleClicked    = false;   // true once any Google button is clicked
+  var exitShown        = false;   // only show popup once per session
+  var mobileTimer      = null;
+
+  /* Mark Google as clicked so we don't nag them */
+  function markGoogleClicked() { googleClicked = true; }
+  googleBtn5.addEventListener('click',    markGoogleClicked);
+  googleBtn4.addEventListener('click',    markGoogleClicked);
+  exitGoogleBtn.addEventListener('click', function () {
+    markGoogleClicked();
+    hideExitPopup();
+  });
+
+  function showExitPopup() {
+    if (exitShown || googleClicked) return;
+    exitShown = true;
+    exitOverlay.classList.add('show');
+  }
+
+  function hideExitPopup() {
+    exitOverlay.classList.remove('show');
+  }
+
+  exitDismiss.addEventListener('click', hideExitPopup);
+  exitOverlay.addEventListener('click', function (e) {
+    if (e.target === exitOverlay) hideExitPopup();
+  });
+
+  function activateExitIntent() {
+    exitActive = true;
+
+    /* Desktop: mouse leaves viewport toward the top (going to address bar / close) */
+    document.addEventListener('mouseleave', function (e) {
+      if (!exitActive || googleClicked || exitShown) return;
+      if (e.clientY < 10) showExitPopup();
+    });
+
+    /* Mobile: show nudge after 9 seconds if they haven't clicked Google */
+    mobileTimer = setTimeout(function () {
+      if (!googleClicked && !exitShown) showExitPopup();
+    }, 9000);
+  }
+
+  /* Clean up mobile timer if Google gets clicked */
+  googleBtn5.addEventListener('click', function () { clearTimeout(mobileTimer); });
 
 })();
 </script>

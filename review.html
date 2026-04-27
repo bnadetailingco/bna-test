@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate Your Experience | BNA Detailing Co.</title>
+
+  <!-- Hidden from Google search results -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicons (same as rest of site) -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ── Brand tokens matching style.css ── */
+    :root {
+      --main:      #86c5da;
+      --dark:      #283b41;
+      --mid:       #5a8694;
+      --white:     #ffffff;
+      --star-idle: #3d555c;
+      --star-on:   #f5a623;
+    }
+
+    /* ── Base ── */
+    html, body {
+      min-height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Subtle ambient glow */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 15% 15%, rgba(134,197,218,0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 45% at 85% 85%, rgba(90,134,148,0.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Outer wrapper ── */
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 20px 64px;
+    }
+
+    /* ── Logo ── */
+    .logo-wrap {
+      margin-bottom: 36px;
+      text-align: center;
+    }
+
+    .logo-wrap img {
+      height: 54px;
+      width: auto;
+    }
+
+    /* ── Card ── */
+    .card {
+      width: 100%;
+      max-width: 500px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(134,197,218,0.14);
+      border-radius: 24px;
+      padding: 48px 40px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+    }
+
+    /* ── Step panel system ── */
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
+      animation: fadeUp 0.35s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    /* ══════════════════════════════
+       STEP 0  Star Rating
+    ══════════════════════════════ */
+
+    .greeting-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--main);
+      margin-bottom: 12px;
+    }
+
+    .card-headline {
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .card-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 400;
+      margin-bottom: 38px;
+      line-height: 1.65;
+    }
+
+    .stars-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .star-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 2px;
+      line-height: 1;
+      transition: transform 0.12s ease;
+    }
+
+    .star-btn:hover  { transform: scale(1.18); }
+    .star-btn:active { transform: scale(0.92); }
+
+    .star-btn i {
+      font-size: 46px;
+      color: var(--star-idle);
+      transition: color 0.13s ease, text-shadow 0.13s ease;
+      display: block;
+    }
+
+    .star-btn.lit i {
+      color: var(--star-on);
+      text-shadow: 0 0 18px rgba(245,166,35,0.45);
+    }
+
+    .star-hint {
+      height: 18px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.38);
+    }
+
+    /* ══════════════════════════════
+       STEP 1  5-star thank you
+    ══════════════════════════════ */
+
+    .icon-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+    }
+
+    .icon-circle.teal {
+      background: rgba(134,197,218,0.1);
+      border: 1.5px solid rgba(134,197,218,0.28);
+    }
+
+    .icon-circle.teal i { color: var(--main); }
+
+    .icon-circle i { font-size: 28px; }
+
+    .step-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .step-body {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .btn-google {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 20px;
+      background: var(--main);
+      color: var(--dark);
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.2px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(134,197,218,0.22);
+    }
+
+    .btn-google:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 26px rgba(134,197,218,0.28);
+    }
+
+    .btn-google i { font-size: 16px; }
+
+    /* ══════════════════════════════
+       STEP 2  Feedback form
+    ══════════════════════════════ */
+
+    .notice-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(245,166,35,0.07);
+      border: 1px solid rgba(245,166,35,0.2);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 26px;
+      text-align: left;
+    }
+
+    .notice-box i {
+      font-size: 18px;
+      color: #f5a623;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .notice-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .notice-text span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .field label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 7px;
+    }
+
+    .opt-tag {
+      font-size: 10px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0;
+      text-transform: none;
+      margin-left: 4px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(134,197,218,0.18);
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.18s, background 0.18s;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(255,255,255,0.22);
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--main);
+      background: rgba(134,197,218,0.05);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 108px;
+      line-height: 1.55;
+    }
+
+    .required-star {
+      color: #f5a623;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px 20px;
+      background: rgba(134,197,218,0.12);
+      border: 1.5px solid rgba(134,197,218,0.5);
+      border-radius: 12px;
+      color: var(--main);
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.2px;
+      margin-top: 4px;
+      transition: background 0.2s, color 0.2s, transform 0.15s, border-color 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: var(--main);
+      color: var(--dark);
+      border-color: var(--main);
+      transform: translateY(-2px);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ══════════════════════════════
+       STEP 3  Confirmation
+    ══════════════════════════════ */
+
+    /* reuses .icon-circle.teal, .step-title, .step-body */
+
+    /* ── Page footer ── */
+    .page-footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.18);
+      text-align: center;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 540px) {
+      .card {
+        padding: 36px 22px;
+        border-radius: 20px;
+      }
+
+      .star-btn i { font-size: 38px; }
+      .stars-row  { gap: 4px; }
+      .two-col    { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 360px) {
+      .star-btn i { font-size: 32px; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+
+  <!-- Logo -->
+  <div class="logo-wrap">
+    <img src="images/bna%20logo.png" alt="BNA Detailing Co.">
+  </div>
+
+  <div class="card">
+
+    <!-- ══════════════════════════════
+         STEP 0  Star rating
+    ══════════════════════════════ -->
+    <div class="step active" id="stepRating">
+      <p class="greeting-label" id="greetingLabel">BNA Detailing Co.</p>
+      <h1 class="card-headline" id="headlineText">How was your detail today?</h1>
+      <p class="card-subtitle">Your opinion means everything to us.<br>Tap a star to rate your experience.</p>
+
+      <div class="stars-row" id="starsRow" role="group" aria-label="Rate your experience">
+        <button class="star-btn" data-value="1" aria-label="1 star"  type="button"><i class="fa-solid fa-star"></i></button>
+        <button class="star-btn" data-value="2" aria-label="2 stars" type="button"><i class="fa-solid fa-star"></i></button>
+        <button class="star-btn" data-value="3" aria-label="3 stars" type="button"><i class="fa-solid fa-star"></i></button>
+        <button class="star-btn" data-value="4" aria-label="4 stars" type="button"><i class="fa-solid fa-star"></i></button>
+        <button class="star-btn" data-value="5" aria-label="5 stars" type="button"><i class="fa-solid fa-star"></i></button>
+      </div>
+
+      <p class="star-hint" id="starHint">&nbsp;</p>
+    </div>
+
+    <!-- ══════════════════════════════
+         STEP 1  5-star redirect
+    ══════════════════════════════ -->
+    <div class="step" id="stepFiveStar">
+      <div class="icon-circle teal">
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <h2 class="step-title">That's amazing &mdash; thank you!</h2>
+      <p class="step-body">
+        We're so glad you had a great experience. Would you
+        mind sharing it on Google? It takes 30 seconds and
+        helps our small business more than you know.
+      </p>
+      <a
+        href="https://g.page/r/CaMYvMwNBNOwEBM/review"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-google"
+      >
+        <i class="fa-brands fa-google"></i>
+        Leave a Google Review
+      </a>
+    </div>
+
+    <!-- ══════════════════════════════
+         STEP 2  Private feedback form
+    ══════════════════════════════ -->
+    <div class="step" id="stepFeedback">
+
+      <div class="notice-box">
+        <i class="fa-solid fa-comment-dots"></i>
+        <div class="notice-text">
+          <strong>Sorry to hear that.</strong>
+          <span>Your message goes directly to our owner. We read every one and take action on it.</span>
+        </div>
+      </div>
+
+      <form id="feedbackForm" action="https://formsubmit.co/info@bnadetailing.com" method="POST">
+
+        <!-- FormSubmit configuration -->
+        <input type="hidden" name="_subject"  value="Customer Feedback - BNA Detailing Co.">
+        <input type="hidden" name="_captcha"  value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next"     value="about:blank">
+
+        <!-- Populated by JS before submit -->
+        <input type="hidden" id="hiddenRating"  name="Star Rating"    value="">
+        <input type="hidden" id="hiddenUrlName" name="Customer (URL)" value="">
+
+        <div class="two-col">
+          <div class="field">
+            <label for="fbName">Name <span class="opt-tag">optional</span></label>
+            <input type="text" id="fbName" name="Name" placeholder="John" autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="fbContact">Phone or Email <span class="opt-tag">optional</span></label>
+            <input type="text" id="fbContact" name="Contact Info" placeholder="(226) 555-0000" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="fbMessage">Your Feedback <span class="required-star">*</span></label>
+          <textarea id="fbMessage" name="Feedback" placeholder="Tell us what happened and how we can do better..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">Send Feedback</button>
+
+      </form>
+    </div>
+
+    <!-- ══════════════════════════════
+         STEP 3  Thank you after feedback
+    ══════════════════════════════ -->
+    <div class="step" id="stepDone">
+      <div class="icon-circle teal">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h2 class="step-title">Feedback received &mdash; thank you.</h2>
+      <p class="step-body" style="margin-bottom: 0;">
+        We're sorry your experience wasn't perfect. Our owner
+        reviews every message personally and we'll use this
+        to keep improving.
+      </p>
+    </div>
+
+  </div>
+
+  <p class="page-footer">&copy; 2025 BNA Detailing Co. &middot; Guelph, Ontario</p>
+
+</div>
+
+<script>
+(function () {
+
+  /* 1. Personalise with ?name= URL param */
+  var params  = new URLSearchParams(window.location.search);
+  var urlName = (params.get('name') || '').trim();
+
+  if (urlName) {
+    document.getElementById('greetingLabel').textContent = 'Hi ' + urlName + ' \uD83D\uDC4B';
+    document.getElementById('headlineText').textContent  = 'How was your detail today?';
+    document.getElementById('hiddenUrlName').value       = urlName;
+  }
+
+  /* 2. Star label text */
+  var hintText = {
+    1: "That bad? We\u2019re really sorry.",
+    2: "We can definitely do better.",
+    3: "Pretty good \u2014 room to improve.",
+    4: "Really good! Almost perfect.",
+    5: "Absolutely love it!"
+  };
+
+  var starBtns       = document.querySelectorAll('.star-btn');
+  var starHint       = document.getElementById('starHint');
+  var selectedRating = 0;
+
+  function setLit(upTo) {
+    starBtns.forEach(function (b) {
+      var v = parseInt(b.getAttribute('data-value'), 10);
+      if (v <= upTo) {
+        b.classList.add('lit');
+      } else {
+        b.classList.remove('lit');
+      }
+    });
+  }
+
+  starBtns.forEach(function (btn) {
+    var val = parseInt(btn.getAttribute('data-value'), 10);
+
+    btn.addEventListener('mouseenter', function () {
+      setLit(val);
+      starHint.textContent = hintText[val] || '';
+    });
+
+    btn.addEventListener('mouseleave', function () {
+      setLit(selectedRating);
+      starHint.textContent = selectedRating ? hintText[selectedRating] : '\u00a0';
+    });
+
+    btn.addEventListener('click', function () {
+      selectedRating = val;
+      setLit(val);
+      starHint.textContent = hintText[val] || '';
+
+      setTimeout(function () {
+        if (val === 5) {
+          showStep('stepFiveStar');
+        } else {
+          document.getElementById('hiddenRating').value =
+            val + ' star' + (val !== 1 ? 's' : '');
+          showStep('stepFeedback');
+        }
+      }, 360);
+    });
+  });
+
+  /* 3. Switch steps */
+  function showStep(id) {
+    document.querySelectorAll('.step').forEach(function (s) {
+      s.classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
+  }
+
+  /* 4. Feedback form AJAX submit */
+  var form      = document.getElementById('feedbackForm');
+  var submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var msg = document.getElementById('fbMessage').value.trim();
+    if (!msg) {
+      document.getElementById('fbMessage').focus();
+      return;
+    }
+
+    submitBtn.disabled    = true;
+    submitBtn.textContent = 'Sending\u2026';
+
+    fetch(form.action, {
+      method:  'POST',
+      body:    new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function () {
+      showStep('stepDone');
+    })
+    .catch(function () {
+      showStep('stepDone');
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>

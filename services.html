@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Car Detailing Services & Pricing Guelph, ON | BNA Detailing Co.</title>
+  <meta name="description" content="BNA Detailing Co. offers mobile car detailing services in Guelph, Ontario — interior deep cleans, exterior hand washes, and full vehicle packages. Transparent pricing by vehicle type. Book today!">
+  <meta name="keywords" content="car detailing prices Guelph, interior car cleaning cost, mobile detailing packages, SUV detailing Guelph, truck detailing Ontario, BNA Detailing services, car detailing Guelph Ontario, mobile car wash Guelph">
+  <meta name="author" content="BNA Detailing Co.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bnadetailingco.com/services.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Car Detailing Services & Pricing Guelph, ON | BNA Detailing Co.">
+  <meta property="og:description" content="Mobile car detailing in Guelph, Ontario. Interior deep cleans, exterior hand washes & full vehicle packages — transparent pricing, we come to you. Book today!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bnadetailingco.com/services.html">
+  <meta property="og:image" content="https://bnadetailingco.com/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="BNA Detailing Co.">
+  <meta property="og:locale" content="en_CA">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Car Detailing Services & Pricing Guelph, ON | BNA Detailing Co.">
+  <meta name="twitter:description" content="Mobile car detailing in Guelph, Ontario. Interior deep cleans, exterior hand washes & full vehicle packages. We come to you — book today!">
+  <meta name="twitter:image" content="https://bnadetailingco.com/images/og-image.jpg">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="BNA">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Performance: preload hero image for LCP -->
+  <link rel="preload" as="image" href="images/tesla.jpg">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RR6MQVQS3D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RR6MQVQS3D');
+
+    function trackEvent(eventName, label) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: label
+      });
+    }
+  </script>
+
+  <!-- FAQ section styles -->
+  <style>
+    .faq-section {
+      background: var(--white);
+      padding: 90px 20px;
+    }
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 22px 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--mid); }
+    .faq-question i {
+      font-size: 14px;
+      color: var(--main);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-question i {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 0 20px;
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      margin-bottom: 18px;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--main); }
+
+    /* ===== TOP ANNOUNCEMENT BAR ===== */
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1100;
+      background: var(--main);
+      color: var(--dark);
+      text-align: center;
+      padding: 9px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .top-bar .stars { color: #f5a623; font-size: 12px; letter-spacing: 1px; }
+    .site-nav { top: 38px !important; }
+    @media (max-width: 860px) {
+      .site-nav { top: 35px !important; }
+      .top-bar { font-size: 12px; padding: 8px 16px; }
+    }
+  </style>
+
+  <!-- Structured Data: LocalBusiness + Service Offers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "BNA Detailing Co.",
+    "alternateName": "Bryan N Allen Detailing Co.",
+    "url": "https://bnadetailingco.com",
+    "logo": "https://bnadetailingco.com/images/bna%20logo.png",
+    "image": "https://bnadetailingco.com/images/og-image.jpg",
+    "telephone": "+12264550942",
+    "email": "bnadetailingco@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Guelph",
+      "addressRegion": "ON",
+      "postalCode": "N1E",
+      "addressCountry": "CA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 43.5448,
+      "longitude": -80.2482
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Guelph",
+      "sameAs": "https://en.wikipedia.org/wiki/Guelph"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "priceRange": "$29.99 - $299.99",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Mobile Car Detailing Packages — Guelph, Ontario",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Interior Deep Clean Car Detailing",
+            "description": "Full interior deep clean including vacuuming, shampoo, steam cleaning, leather conditioning, carpet cleaning, salt stain removal, and interior window cleaning. Available for sedans, SUVs, trucks, and minivans in Guelph, Ontario."
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "priceCurrency": "CAD",
+            "minPrice": "199.99"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Exterior Hand Wash & Detailing",
+            "description": "Professional exterior hand wash and detailing including bug removal, rim cleaning, tire shine, window and mirror cleaning, and door jamb wipe-down. Mobile service in Guelph, Ontario."
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "priceCurrency": "CAD",
+            "minPrice": "29.99"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Full Vehicle Detailing Package",
+            "description": "Complete interior and exterior detailing package. Includes full interior deep clean, shampoo, steam, leather care, carpet cleaning, plus exterior hand wash, bug removal, rim cleaning, and tire shine. Best value mobile detailing in Guelph."
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "priceCurrency": "CAD",
+            "minPrice": "209.99"
+          }
+        }
+      ]
+    },
+    "sameAs": [
+      "https://www.instagram.com/bnadetailingco",
+      "https://www.tiktok.com/@bnadetailingco"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does car detailing cost in Guelph?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "At BNA Detailing Co. in Guelph, Ontario, our exterior hand wash starts at $29.99, interior deep clean starts at $199.99, and our full vehicle detailing package starts at $209.99. Pricing varies by vehicle type (sedan, compact SUV, full-size SUV/truck, or minivan)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you come to my house for car detailing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! BNA Detailing Co. is a fully mobile car detailing service in Guelph, Ontario. We come directly to your driveway, workplace, or any location that works for you — no need to drop your car off anywhere."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is included in an interior car detailing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our interior deep clean includes vacuuming, dusting, shampoo and steam cleaning, trunk vacuum and shampoo, salt stain removal, interior window and mirror cleaning, leather cleaning and conditioning, seat shampoo and stain removal, and carpet cleaning and conditioning. Pet hair removal and ozone generator treatments are available as add-ons."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a full car detail take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A full vehicle detailing package typically takes between 3 to 5 hours depending on the size and condition of your vehicle. Interior-only or exterior-only services are generally faster. We'll give you a time estimate when you book."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer car detailing for trucks and SUVs in Guelph?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. BNA Detailing Co. services all vehicle types including sedans, compact SUVs, full-size SUVs, trucks, and minivans. Pricing is adjusted by vehicle size to ensure fair, transparent rates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you remove pet hair from my car?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! We offer pet hair removal as an add-on service for an additional $25+. It can be added to any interior or full vehicle detailing package."
+        }
+      }
+      
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+<!-- ===== TOP ANNOUNCEMENT BAR ===== -->
+<div class="top-bar">
+  <span>
+    <strong class="badge">LIMITED TIME</strong> 20% OFF when you pre-book now for our May 3rd opening!
+  </span>
+</div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="site-nav solid" id="siteNav">
+  <a href="index.html" class="logo">
+    <img src="images/bna%20logo.png" alt="BNA Detailing Co. Logo">
+  </a>
+  <div class="nav-right">
+    <div class="social-nav">
+      <a href="https://www.instagram.com/bnadetailingco" target="_blank" rel="noopener noreferrer" aria-label="BNA Detailing Co. on Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@bnadetailingco" target="_blank" rel="noopener noreferrer" aria-label="BNA Detailing Co. on TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+    <div class="nav-menu">
+      <a href="index.html">HOME</a>
+      <a href="services.html" class="active">SERVICES</a>
+      <a href="gallery.html">GALLERY</a>
+      <a href="contact-us.html">CONTACT</a>
+      <a href="https://book.squareup.com/appointments/ii0uvft0j96s75/location/LG6PJW85D509R/services" target="_blank" rel="noopener noreferrer" class="cta-btn" onclick="trackEvent('click', 'nav_book_now')">BOOK NOW</a>
+    </div>
+    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobileMenu">
+  <button class="close-btn" onclick="closeMobileMenu()">&times;</button>
+  <a href="index.html" onclick="closeMobileMenu()">HOME</a>
+  <a href="services.html" onclick="closeMobileMenu()">SERVICES</a>
+  <a href="gallery.html" onclick="closeMobileMenu()">GALLERY</a>
+  <a href="contact-us.html" onclick="closeMobileMenu()">CONTACT</a>
+  <a href="https://book.squareup.com/appointments/ii0uvft0j96s75/location/LG6PJW85D509R/services" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()" style="color:#86c5da;">BOOK NOW</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero hero-mini">
+  <img class="hero-image-bg" src="images/tesla.jpg" alt="BNA Detailing Co. mobile car detailing services in Guelph Ontario">
+  <div class="hero-content">
+    <h1>Mobile Car Detailing Services in <span>Guelph, Ontario</span></h1>
+    <p>Choose your vehicle type to see transparent pricing for every package.</p>
+  </div>
+</section>
+
+<!-- ===== SERVICE INTRO + SELECTOR ===== -->
+<section class="section section-light">
+  <div class="container">
+    <div class="section-heading fade-up">
+      <h2>Choose Your Detailing Package</h2>
+      <p>At BNA Detailing Co., we specialize in deep interior cleaning, exterior hand washes, tire shines, and full vehicle sanitation — bringing expert mobile detailing straight to your driveway in Guelph, Ontario.</p>
+    </div>
+
+    <!-- Vehicle Selector -->
+    <div class="service-selector fade-up">
+      <label for="vehicleType">Select Your Vehicle Type</label>
+      <select id="vehicleType" onchange="updatePrices()">
+        <option value="sedan">Sedan</option>
+        <option value="compact_suv">Compact SUV</option>
+        <option value="full_suv_truck">Full-Size SUV / Truck</option>
+        <option value="minivan">Minivan</option>
+      </select>
+    </div>
+
+    <!-- Service Cards -->
+    <div class="service-cards-row fade-up">
+
+      <!-- Interior Deep Clean -->
+      <div class="svc-card">
+        <div class="svc-card-header">
+          <h3>Interior Deep Clean<br>Car Detailing</h3>
+          <div class="svc-price">
+            <span class="starting">Starting at</span>
+            <span id="price-interior">$199.99</span>
+          </div>
+        </div>
+        <div class="svc-card-body">
+          <ul>
+            <li>Vacuum, Cleaning &amp; Dusting</li>
+            <li>Shampoo &amp; Steam Cleaning</li>
+            <li>Trunk Vacuum &amp; Shampoo</li>
+            <li>Salt Stain Removal</li>
+            <li>Interior Windows &amp; Mirror Cleaning</li>
+            <li>Leather Cleaning &amp; Conditioning</li>
+            <li>Seats Shampoo &amp; Stain Removal</li>
+            <li>Carpet Cleaning &amp; Conditioning</li>
+            <li class="addon">Pet Hair Removal — Additional $25+</li>
+            <li class="addon">Ozone Generator Treatment — Additional $50+</li>
+          </ul>
+        </div>
+        <div class="svc-card-footer">
+          <a href="https://book.squareup.com/appointments/ii0uvft0j96s75/location/LG6PJW85D509R" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="trackEvent('click', 'book_interior_detail')">BOOK HERE</a>
+        </div>
+      </div>
+
+      <!-- Exterior Hand Wash -->
+      <div class="svc-card">
+        <div class="svc-card-header">
+          <h3>Exterior Hand Wash<br>&amp; Detailing</h3>
+          <div class="svc-price">
+            <span class="starting">Starting at</span>
+            <span id="price-exterior">$29.99</span>
+          </div>
+        </div>
+        <div class="svc-card-body">
+          <ul>
+            <li>Exterior Hand Wash &amp; Dry</li>
+            <li>Bug Removal</li>
+            <li>Exterior Window &amp; Mirror Cleaning</li>
+            <li>Door Jambs Wiped Down</li>
+            <li>Rim Cleaning</li>
+            <li>Tire Clean &amp; Shine</li>
+          </ul>
+        </div>
+        <div class="svc-card-footer">
+          <a href="https://book.squareup.com/appointments/ii0uvft0j96s75/location/LG6PJW85D509R" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="trackEvent('click', 'book_exterior_wash')">BOOK HERE</a>
+        </div>
+      </div>
+
+      <!-- Full Vehicle Package -->
+      <div class="svc-card">
+        <div class="svc-card-header" style="background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 100%);">
+          <span style="display:inline-block;background:var(--main);color:var(--dark);font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:10px;letter-spacing:0.5px;">BEST VALUE</span>
+          <h3>Full Vehicle<br>Detailing Package</h3>
+          <div class="svc-price">
+            <span class="starting">Starting at</span>
+            <span id="price-full">$209.99</span>
+          </div>
+        </div>
+        <div class="svc-card-body">
+          <ul>
+            <li>Interior Vacuum, Cleaning &amp; Dusting</li>
+            <li>Interior Shampoo &amp; Steam Cleaning</li>
+            <li>Trunk Vacuum &amp; Shampoo</li>
+            <li>Salt Stain Removal</li>
+            <li>Interior Windows &amp; Mirror Cleaning</li>
+            <li>Leather Cleaning &amp; Conditioning</li>
+            <li>Seat Shampoo &amp; Stain Removal</li>
+            <li>Carpet Shampoo &amp; Stain Removal</li>
+            <li>Exterior Hand Wash &amp; Dry</li>
+            <li>Bug Removal</li>
+            <li>Exterior Window &amp; Mirror Cleaning</li>
+            <li>Door Jambs Wiped Down</li>
+            <li>Rim Cleaning</li>
+            <li>Tire Clean &amp; Shine</li>
+            <li class="addon">Pet Hair Removal — Additional $25+</li>
+            <li class="addon">Ozone Generator Treatment — Additional $50+</li>
+          </ul>
+        </div>
+        <div class="svc-card-footer">
+          <a href="https://book.squareup.com/appointments/ii0uvft0j96s75/location/LG6PJW85D509R" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="trackEvent('click', 'book_full_package')">BOOK HERE</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="faq-section" aria-label="Frequently asked questions about car detailing in Guelph">
+  <div class="container">
+    <div class="section-heading fade-up">
+<h2>Frequently Asked Questions</h2>
+<p>Quick answers about our mobile car detailing services in Guelph.</p>
+</div>
+<div class="faq-list fade-up">
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+      How much does car detailing cost in Guelph?
+      <i class="fa-solid fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      Pricing depends on your vehicle and the level of service. Our exterior washes start at <strong>$29.99</strong>, interior deep cleans start at <strong>$199.99</strong>, and full details start at <strong>$209.99</strong>. You can use the selector above to see exact pricing for your vehicle.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+      Do you come to my house?
+      <i class="fa-solid fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      Yes, we’re fully mobile. We come to your driveway. No drop-offs, no waiting around.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+      Can you come to my office, workplace, or anywhere that doesn't provide water or electricity?
+      <i class="fa-solid fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      Unfortunately we do not have our own water, or electricity. But in situations such as these, we are more than happy to come and pick up your vehicle, and drop it off as soon as we are finished with it.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+      How long does a detail take?
+      <i class="fa-solid fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      Most full details take around <strong>2–4 hours</strong>. Smaller services are quicker. We’ll give you a more accurate time estimate when you book.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+      Do you work on trucks and SUVs?
+      <i class="fa-solid fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      Yes, we service everything from sedans to full-size trucks and SUVs. Pricing just scales based on vehicle size.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+      Can you remove pet hair?
+      <i class="fa-solid fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      We can. Pet hair removal is available as an add-on (starting at <strong>$25</strong>) and can be included with any interior or full detail.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+      Do you offer ceramic coating?
+      <i class="fa-solid fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      Not at the moment. We plan on doing ceramic coating in the <strong>Summer of 2026.</strong> We will send an update on this website, and on our social media once we start servicing it.
+    </div>
+  </div>
+
+</div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/bnadetailingco" target="_blank" rel="noopener noreferrer" aria-label="BNA Detailing Co. on Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@bnadetailingco" target="_blank" rel="noopener noreferrer" aria-label="BNA Detailing Co. on TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact-us.html">Contact</a>
+    </nav>
+    <p class="seo-text">Proudly serving Guelph, Ontario with expert mobile car detailing services — trusted for interior cleaning, exterior washes, and full-service vehicle detailing.</p>
+    <p class="copy">&copy; 2025 BNA Detailing Co. | All rights reserved.</p>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to Top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+// Pricing data
+const prices = {
+  sedan:          { interior: '$199.99', exterior: '$29.99',  full: '$209.99' },
+  compact_suv:    { interior: '$209.99', exterior: '$39.99',  full: '$229.99' },
+  full_suv_truck: { interior: '$229.99', exterior: '$39.99',  full: '$249.99' },
+  minivan:        { interior: '$259.99', exterior: '$69.99',  full: '$299.99' }
+};
+
+function updatePrices() {
+  const type = document.getElementById('vehicleType').value;
+  const p = prices[type];
+  trackEvent('select', 'vehicle_type_' + type);
+
+  ['price-interior','price-exterior','price-full'].forEach(id => {
+    const el = document.getElementById(id);
+    el.style.transition = 'opacity 0.15s';
+    el.style.opacity = '0';
+  });
+
+  setTimeout(() => {
+    document.getElementById('price-interior').textContent = p.interior;
+    document.getElementById('price-exterior').textContent = p.exterior;
+    document.getElementById('price-full').textContent = p.full;
+    ['price-interior','price-exterior','price-full'].forEach(id => {
+      document.getElementById(id).style.opacity = '1';
+    });
+  }, 150);
+}
+
+// FAQ accordion
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+  });
+  // Open clicked if it was closed
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
+
+// Nav & scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none';
+});
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+
+<!-- ==== CHATBOT ==== -->
+<script src="chatbot-widget.js"></script>
+
+
+</body>
+</html>
